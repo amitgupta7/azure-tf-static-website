@@ -22,6 +22,9 @@ resource "azurerm_static_site" "lab-website" {
 }
 
 resource "null_resource" "deployment" {
+  triggers = {
+    build_number = "${timestamp()}"
+  }
 
   depends_on = [ null_resource.installDeps ]
 
