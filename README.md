@@ -21,7 +21,7 @@
 # null_resource.deployment: Creation complete after 23s [id=3986767701860863060]
 # Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
 # Outputs:
-# url = "http://white-sand-0c1fb831e.3.azurestaticapps.net"
+# url = "https://white-sand-0c1fb831e.3.azurestaticapps.net"
 # ...
 
 # Destroy the resources and static website.

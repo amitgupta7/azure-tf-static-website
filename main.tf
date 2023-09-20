@@ -26,7 +26,7 @@ resource "null_resource" "deployment" {
     build_number = "${timestamp()}"
   }
 
-  depends_on = [ null_resource.installDeps ]
+  depends_on = [ azurerm_static_site.lab-website ]
 
   provisioner "local-exec" {
     command = format("swa deploy ./src --env production --deployment-token '%s'", nonsensitive(azurerm_static_site.lab-website.api_key))
@@ -35,5 +35,5 @@ resource "null_resource" "deployment" {
 }
 
 output "url" {
-  value = "http://${azurerm_static_site.lab-website.default_host_name}"
+  value = "https://${azurerm_static_site.lab-website.default_host_name}"
 }
