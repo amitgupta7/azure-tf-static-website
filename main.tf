@@ -18,11 +18,24 @@ resource "azurerm_static_site" "lab-website" {
   resource_group_name = var.az_resource_group
   location            = var.location
   sku_size            = "Free"
+  sku_tier            = "Free"
 }
 
-output "deployment-token" {
-  value = azurerm_static_site.lab-website.api_key
-  sensitive = true
+resource "null_resource" "installDeps" {
+  depends_on = [ azurerm_static_site.lab-website ]
+  provisioner "local-exec" {
+    command = "npm install -g @azure/static-web-apps-cli"
+  }
+}
+
+resource "null_resource" "deployment" {
+
+  depends_on = [ null_resource.installDeps ]
+
+  provisioner "local-exec" {
+    command = format("swa deploy ./src --deployment-token '%s'", nonsensitive(azurerm_static_site.lab-website.api_key))
+  }  
+  
 }
 
 output "url" {
