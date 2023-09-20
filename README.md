@@ -1,4 +1,5 @@
 # azure-tf-static-website
+This is a simple terraform script to setup an azure static website with serverless function backend. For learning purpose only. See `src/clinic-website` for the static website, and `src/api` for azure serverless function backend apis (written in node v16). 
 
 ```shell
 # Install and login to azure cli
