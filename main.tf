@@ -29,7 +29,7 @@ resource "null_resource" "deployment" {
   depends_on = [ azurerm_static_site.lab-website ]
 
   provisioner "local-exec" {
-    command = format("swa deploy ./src --env production --deployment-token '%s'", nonsensitive(azurerm_static_site.lab-website.api_key))
+    command = format("swa deploy ./src/clinic-website --env production --deployment-token '%s'", nonsensitive(azurerm_static_site.lab-website.api_key))
   }  
   
 }
