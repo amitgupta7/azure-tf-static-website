@@ -2,8 +2,23 @@
 <html lang="en">
 
 <head>
+    <script>
+     function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        let expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+        let params = (new URL(document.location)).searchParams;
+        let name = params.get("name");
+        setCookie("tracking", `${document.location.toString()}`, 1000);
+        (async function() {
+            apiRep = await( await fetch(`/api/message?name=${name}`)).json();
+            document.querySelector('#message').textContent = apiRep.message;
+        }());
+    </script>
     <meta charset="utf-8">
-    <title>Klinik - Clinic Website Template</title>
+    <title>Klinik - Clinic Website</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -53,6 +68,10 @@
                 <div class="h-100 d-inline-flex align-items-center py-3">
                     <small class="far fa-clock text-primary me-2"></small>
                     <small>Mon - Fri : 09.00 AM - 09.00 PM</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center py-3">
+                    <small class="far fa-clock text-primary me-2"></small>
+                    <small id="message">...</small>
                 </div>
             </div>
             <div class="col-lg-5 px-5 text-end">

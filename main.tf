@@ -29,11 +29,11 @@ resource "null_resource" "deployment" {
   depends_on = [ azurerm_static_site.lab-website ]
 
   provisioner "local-exec" {
-    command = format("swa deploy ./src/clinic-website --env production --deployment-token '%s'", nonsensitive(azurerm_static_site.lab-website.api_key))
+    command = format("swa deploy ./src/clinic-website --api-location ./src/api --env production --deployment-token '%s'", nonsensitive(azurerm_static_site.lab-website.api_key))
   }  
   
 }
 
 output "url" {
-  value = "https://${azurerm_static_site.lab-website.default_host_name}"
+  value = "https://${azurerm_static_site.lab-website.default_host_name}?name=${var.az_name_prefix}"
 }
