@@ -15,7 +15,6 @@ This is a simple terraform script to setup an azure static website with serverle
 % cd azure-tf-static-website
 % source tfAlias
 % tf init
-% echo "<h2>Some Message Here</h2>" >> ./src/index.html
 % tfaa
 # ...
 # null_resource.deployment (local-exec): ✔ Project deployed to https://white-sand-0c1fb831e.3.azurestaticapps.net 🚀
