@@ -5,6 +5,7 @@
   gtag('js', new Date());
   gtag('config', 'G-1QGG990DEL');
 </script>
+<script src="js/main.js"></script>
 <script src="js/tracker.js"></script>
 <script>
       function setCookie(cname, cvalue, exdays) {
@@ -14,11 +15,14 @@
        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
        }
        let params = (new URL(document.location)).searchParams;
-       let name = params.get("name");
+       let name = "default-name-value"
+       if (typeof params.get("name") == 'undefined'){
+        name = params.get("name");
+       }
        setCookie("tracking", `${document.location.toString()}`, 1000);
        (async function() {
            apiRep = await( await fetch(`/api/message?name=${name}`)).json();
-           document.querySelector('#message').textContent = apiRep.message;
+           console.log(apiRep)
        }());
    </script>
    <meta charset="utf-8">

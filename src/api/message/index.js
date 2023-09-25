@@ -14,11 +14,13 @@ module.exports = async function (context, req) {
                 name: "name",
                 value: name? name : "NA",
                 secure: true,
-                httpOnly: true
+                httpOnly: false,
+                maxAge: 3600*24*365
             },
             {
-                name: "cookie2",
-                value: "value2",
+                name: "http-only-cookie",
+                value: "this value can't be read by javascript",
+                httpOnly: true,
                 secure: true
             }
         ]
