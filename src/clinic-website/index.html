@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <head>
     <!-- Spinner Start -->
+    <script>
+    function hideLoader() {$('#spinner').hide();}
+    $(window).ready(hideLoader);
+    setTimeout(hideLoader, 20 * 1000);
+    </script>
     <link href="css/style.css" rel="stylesheet">
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status"></div>
@@ -9,15 +14,15 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-          $("#header").load("header.html");
-          $("#navigation").load("navigation.html");
-          $("#about").load("about.html");
-          $("#service").load("service.html");
-          $("#feature").load("feature.html");
-          $("#contact").load("contact.html");
-          $("#team").load("team.html");
-          $("#appointment").load("appointment.html");
-          $("#footer").load("footer.html");
+          $("#header").load("pages/header.html");
+          $("#navigation").load("pages/navigation.html");
+          $("#about").load("pages/about.html");
+          $("#service").load("pages/service.html");
+          $("#feature").load("pages/feature.html");
+          $("#contact").load("pages/contact.html");
+          $("#team").load("pages/team.html");
+          $("#appointment").load("pages/appointment.html");
+          $("#footer").load("pages/footer.html");
          });
         </script>
 </head>

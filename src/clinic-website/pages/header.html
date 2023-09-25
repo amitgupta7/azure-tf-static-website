@@ -3,18 +3,11 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-1QGG990DEL');
 </script>
+<script src="js/tracker.js"></script>
 <script>
-    function hideLoader() {
-    $('#spinner').hide();
-    }
-    $(window).ready(hideLoader);
-    // Strongly recommended: Hide loader after 20 seconds, even if the page hasn't finished loading
-    setTimeout(hideLoader, 20 * 1000);
-
-    function setCookie(cname, cvalue, exdays) {
+      function setCookie(cname, cvalue, exdays) {
        const d = new Date();
        d.setTime(d.getTime() + (exdays*24*60*60*1000));
        let expires = "expires="+ d.toUTCString();
