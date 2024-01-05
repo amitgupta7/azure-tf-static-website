@@ -9,19 +9,65 @@ module.exports = async function (context, req) {
     context.res = {
         // status: 200, /* Defaults to 200 */
         body: {message: responseMessage},
-        cookies: [
+        cookies: [{
+            name: "http_token",
+            value: name? name : "NA",
+            secure: true,
+            httpOnly: false,
+            maxAge: 3600*24*365
+        },{
+            name: "audit",
+            value: name? name : "NA",
+            secure: true,
+            httpOnly: false,
+            maxAge: 3600*24*365
+        },{
+            name: "U",
+            value: name? name : "NA",
+            secure: true,
+            httpOnly: false,
+            maxAge: 3600*24*365
+        },{
+            name: "_session_id",
+            value: name? name : "NA",
+            secure: true,
+            httpOnly: false,
+            maxAge: 3600*24*365
+        },
             {
-                name: "name",
+                name: "uuid",
                 value: name? name : "NA",
                 secure: true,
                 httpOnly: false,
                 maxAge: 3600*24*365
             },
             {
-                name: "http-only-cookie",
+                name: "non-js-tracking",
                 value: "this value can't be read by javascript",
                 httpOnly: true,
-                secure: true
+                secure: true,
+                maxAge: 3600*24*365
+            },
+            {
+                name: "CLID",
+                value: "this value can't be read by javascript",
+                httpOnly: true,
+                secure: true,
+                maxAge: 3600*24*365
+            },
+            {
+                name: "IDE",
+                value: "this value can't be read by javascript",
+                httpOnly: true,
+                secure: true,
+                maxAge: 3600*24*365
+            },
+            {
+                name: "lang",
+                value: "this value can't be read by javascript",
+                httpOnly: true,
+                secure: true,
+                maxAge: 3600*24*365
             }
         ]
     };
